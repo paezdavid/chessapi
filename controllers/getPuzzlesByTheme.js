@@ -33,8 +33,8 @@ exports.getPuzzlesByTheme = async (req, res) => {
     const json = {
         resultsInfo: {
             totalAmountOfDocs: totalAmountOfDocs,
-            previousPage: currentPage === 1 || currentPage == "1" ? null : `http://localhost:5500/puzzles/theme/${req.params.theme}?pageNumber=${Number(currentPage) - 1}`,
-            nextPage: totalAmountOfDocs <= 15 ? null : `http://localhost:5500/puzzles/theme/${req.params.theme}?pageNumber=${Number(currentPage) + 1}`
+            previousPage: currentPage === 1 || currentPage == "1" ? null : `http://localhost:5500/puzzles/themes/${req.params.theme}?pageNumber=${Number(currentPage) - 1}`,
+            nextPage: totalAmountOfDocs <= 15 ? null : `http://localhost:5500/puzzles/themes/${req.params.theme}?pageNumber=${Number(currentPage) + 1}`
         },
         data: arrOfPuzzles
     }
