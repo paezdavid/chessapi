@@ -1,7 +1,7 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const dotenv = require('dotenv').config();
 
-exports.getPuzzleByRating = async (req, res) => {
+exports.getPuzzlesByRating = async (req, res) => {
     // Connect to the DB
     const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@clusterchessapi.8lfh9av.mongodb.net/`
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
