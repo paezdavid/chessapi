@@ -14,12 +14,18 @@ app.use(express.json());
 // Controllers
 const { getPuzzles } = require("./controllers/getPuzzles");
 const { getPuzzleById } = require("./controllers/getPuzzle");
-const { getPuzzleByRating } = require("./controllers/getPuzzleByRating");
+const { getPuzzlesByRating } = require("./controllers/getPuzzlesByRating");
+const { getPuzzlesByTheme } = require("./controllers/getPuzzlesByTheme");
 
 // Routes
-app.get("/puzzles", getPuzzles);
-app.get("/puzzles/:rating", getPuzzleByRating)
-app.get("/puzzle/:puzzleId", getPuzzleById)
+app.get("/puzzles", getPuzzles); // Get all puzzles
+app.get("/puzzles/:rating", getPuzzlesByRating) // Get all puzzles of a given rating
+app.get("/puzzles/themes/:theme", getPuzzlesByTheme) // Get all puzzles of a given theme
+app.get("/puzzle/:puzzleId", getPuzzleById) // Get a single puzzle by its Lichess ID
+
+
+
+
 
 
 module.exports = router
