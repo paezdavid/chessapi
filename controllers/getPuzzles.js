@@ -1,17 +1,16 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const dotenv = require('dotenv').config();
+const { MongoClient } = require('mongodb');
 
 exports.getPuzzles = async (req, res) => {
     // Connect to the DB
-    const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@clusterchessapi.8lfh9av.mongodb.net/`
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+    const uri = `mongodb://127.0.0.1:27017/`;
+    const client = new MongoClient(uri);
     await client.connect()
 
     // Connect to the collection
-    const collection = await client.db(`${process.env.DB_NAME}`).collection(`${process.env.COLL_NAME}`)
+    const collection = await client.db(`chessapi`).collection(`puzzles`)
 
     // Get total amount of docs on the DB
-    // const totalAmountOfDocs = await collection.countDocuments()
+    const totalAmountOfDocs = await collection.countDocuments()
 
     // Pagination data
     const docsPerPage = 15
@@ -34,7 +33,7 @@ exports.getPuzzles = async (req, res) => {
     // Insert the documents inside an object along with some extra info
     const json = {
         resultsInfo: {
-            totalAmountOfDocs: 1304000,
+            totalAmountOfDocs: totalAmountOfDocs,
             previousPage: currentPage === 1 || currentPage == "1" ? null : `http://localhost:5500/puzzles/?pageNumber=${Number(currentPage) - 1}`,
             nextPage: `http://localhost:5500/puzzles/?pageNumber=${Number(currentPage) + 1}`
         },

@@ -1,14 +1,13 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const dotenv = require('dotenv').config();
+const { MongoClient } = require('mongodb');
 
 exports.getPuzzlesByTheme = async (req, res) => {
     // Connect to the DB
-    const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@clusterchessapi.8lfh9av.mongodb.net/`
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+    const uri = `mongodb://127.0.0.1:27017/`;
+    const client = new MongoClient(uri);    
     await client.connect()
 
     // Connect to the collection
-    const collection = await client.db(`${process.env.DB_NAME}`).collection(`${process.env.COLL_NAME}`)
+    const collection = await client.db(`chessapi`).collection(`puzzles`)
 
     // Pagination data
     const docsPerPage = 15
