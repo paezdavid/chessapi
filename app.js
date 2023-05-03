@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || "5500";
 
 // Open the server
-app.listen(port, () => console.log(`Listening to requests on http://localhost:${port}`));
+app.listen(port, () => console.log(`Listening to requests on http://localhost:${port}/puzzles`));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());  
