@@ -101,7 +101,7 @@ I am showing you only one document here, but the real response is paginated with
   "resultsInfo":{
     "totalAmountOfDocs":18,
     "previousPage":null,
-    "nextPage":"http://localhost:5500/puzzles/theme/fork?pageNumber=2"
+    "nextPage":"http://localhost:5500/puzzles/themes/fork?pageNumber=2"
   },
   "data":[
     {
